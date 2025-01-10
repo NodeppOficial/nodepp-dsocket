@@ -1,5 +1,5 @@
 #include <nodepp/nodepp.h>
-#include <hsocket/hs.h>
+#include <dsocket/ds.h>
 #include <nodepp/fs.h>
 
 using namespace nodepp;
@@ -7,9 +7,9 @@ using namespace nodepp;
 void onMain() {
 
     auto cin    = fs::std_input();
-    auto server = hs::server();
+    auto server = ds::server();
 
-    server.onConnect([=]( hs_t cli ){
+    server.onConnect([=]( ds_t cli ){
 
         cli.onClose([=](){ process::exit(); });
 

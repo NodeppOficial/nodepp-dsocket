@@ -1,15 +1,15 @@
 #include <nodepp/nodepp.h>
-#include <hsocket/hs.h>
+#include <dsocket/ds.h>
 #include <nodepp/fs.h>
 
 using namespace nodepp;
 
 void onMain() {
 
-    auto client = hs::client( "hs://localhost:8000" );
+    auto client = ds::client( "ds://localhost:8000" );
     auto cin    = fs::std_input(); 
 
-    client.onConnect([=]( hs_t cli ){
+    client.onConnect([=]( ds_t cli ){
 
         cli.onClose([=](){ process::exit(); });
 

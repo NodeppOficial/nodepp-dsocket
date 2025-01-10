@@ -1,18 +1,18 @@
-# Nodepp-HTTP-Socket
+# Nodepp-DSocket
 a simple chunk encoding websocket implementation
 
 ## Client
 ```cpp
 #include <nodepp/nodepp.h>
-#include <hsocket/hs.h>
+#include <dsocket/ds.h>
 
 using namespace nodepp;
 
 void onMain() {
 
-    auto client = hs::client( "hs://localhost:8000" );
+    auto client = ds::client( "ds://localhost:8000" );
 
-    client.onConnect([=]( hs_t cli ){
+    client.onConnect([=]( ds_t cli ){
 
         cli.onClose([=](){ process::exit(); });
 
@@ -31,15 +31,15 @@ void onMain() {
 ## Server
 ```cpp
 #include <nodepp/nodepp.h>
-#include <hsocket/hs.h>
+#include <dsocket/ds.h>
 
 using namespace nodepp;
 
 void onMain() {
 
-    auto server = hs::server();
+    auto server = ds::server();
 
-    server.onConnect([=]( hs_t cli ){
+    server.onConnect([=]( ds_t cli ){
 
         cli.onClose([=](){ process::exit(); });
 
